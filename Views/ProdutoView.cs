@@ -25,7 +25,7 @@ namespace Revisao
                 switch (op)
                 {
                     case "1":
-                        CadastrarProduto();
+                        CriarProduto();
                         break;
                     case "2":
                         ListarProdutos();
@@ -40,19 +40,19 @@ namespace Revisao
             }
         }
 
-        private void CadastrarProduto()
+        private void CriarProduto()
         {
             Console.WriteLine("=== Cadastrar Produto ===");
             Console.Write("Nome do produto: ");
             var nome = Console.ReadLine() ?? string.Empty;
 
             Console.Write("Preço do produto: ");
-            decimal preco = decimal.Parse(Console.ReadLine());
+            decimal preco = decimal.Parse(Console.ReadLine() ?? "0");
 
             Console.Write("Estoque: ");
-            int estoque = int.Parse(Console.ReadLine());
+            int estoque = int.Parse(Console.ReadLine() ?? "0");
 
-            var produto = _controller.CadastrarProduto(nome, preco, estoque);
+            var produto = _controller.CriarProduto(nome, preco, estoque);
             Console.WriteLine($"Produto '{produto.Nome}' criado com ID {produto.Id}.");
         }
 
